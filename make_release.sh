@@ -12,15 +12,19 @@ export CDOC2_SERVER_VER=$(mvn -f cdoc2-server help:evaluate -Dexpression=project
 
 GIT_BRANCH=$(git branch --show-current)
 
+if [[ -n $(git status --porcelain --untracked-files=no) ]]; then
+  echo "Uncommited changes detected."
+  exit 1
+fi
 
 if [[ ${CDOC2_SERVER_VER} == *"SNAPSHOT"* ]];then
     echo "cdoc2-server is still on SNAPSHOT ${CDOC2_SERVER_VER}. Did you run prepare_release.sh?"
-    exit 1
+    exit 2
 fi
 
 if ! grep -q ${CDOC2_SERVER_VER} "CHANGELOG.md"; then
   echo "Can't find \"${CDOC2_SERVER_VER}\" in CHANGELOG.md. Did you write CHANGELOG?"
-  exit 2
+  exit 3
 fi
 
 
@@ -29,7 +33,9 @@ export RELEASE_BRANCH="test_v$CDOC2_SERVER_VER"
 
 git checkout -b "$RELEASE_BRANCH"
 git commit -a -m "Release cdoc2-server version $CDOC2_SERVER_VER"
-git push $GIT_REMOTE "$RELEASE_BRANCH"
+git tag "$RELEASE_BRANCH"
+
+#git push $GIT_REMOTE "$RELEASE_BRANCH"
 
 # delete branch
 # git checkout RM-3196_release_workflow
