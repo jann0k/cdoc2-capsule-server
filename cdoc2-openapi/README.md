@@ -45,7 +45,7 @@ reason only OAS needs to be published, then following procedure can be used
 
 * Edit *-openapi.yaml (increase version. Until OAS is not final, use '-Draft' during development )
 * Run `mvn -f cdoc2-opeanpi install -Dcodegen.skip=true` to copy new version of OAS into local maven repository (~/.m2 directory)
-* Run `mvn -f cdoc2-opeanpi deploy -Dcodegen.skip=true` to copy new version of OAS to Maven package repository
+* Run `mvn -f cdoc2-opeanpi deploy -Dcodegen.skip=true -Dmaven.deploy.skip=true` to copy new version of OAS to Maven package repository
 
 
 
