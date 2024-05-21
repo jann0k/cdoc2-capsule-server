@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -o xtrace
+#set -o xtrace
 # git commit
 # git tag
 # git push
@@ -14,7 +14,7 @@ GIT_BRANCH=$(git branch --show-current)
 GIT_REMOTE=$(git config --get-regexp "branch\.$GIT_BRANCH\.remote" | sed -e "s/^.* //")
 
 if [[ "master" != "$GIT_BRANCH" ]]; then
-  echo "Not on 'master' branch. You have 5 seconds to abort, before script will continue"
+  echo "Not on 'master' branch. You have 5 seconds to abort or the script will continue"
   sleep 5
 fi
 
@@ -32,11 +32,12 @@ fi
 
 #TODO: change release_branch name
 export RELEASE_BRANCH="test_v$CDOC2_SERVER_VER"
+export RELEASE_TAG="tag_$RELEASE_BRANCH"
 
 git checkout -b "$RELEASE_BRANCH" || exit 1
 git commit -a -m "Release cdoc2-server version $CDOC2_SERVER_VER" || exit 1
-git tag "$RELEASE_BRANCH" || exit 1
-git push --tags $GIT_REMOTE "tag_$RELEASE_BRANCH" || exit 1
+git tag "$RELEASE_TAG" || exit 1
+git push --tags $GIT_REMOTE "$RELEASE_TAG" || exit 1
 
 # to delete branch
 # git checkout RM-3196_release_workflow
