@@ -19,7 +19,7 @@ if [[ ${CDOC2_SERVER_VER} == *"SNAPSHOT"* ]];then
 fi
 
 if ! grep -q ${CDOC2_SERVER_VER} "CHANGELOG.md"; then
-  echo "Can't find \"${CDOC2_SERVER_VER}\" in CHANGELOG.md. Did you write CHANGELOG?"
+  echo "Can't find \"${CDOC2_SERVER_VER}\" in CHANGELOG.md. Did you update CHANGELOG.md?"
   exit 3
 fi
 
@@ -39,5 +39,10 @@ git push --tags $GIT_REMOTE "$RELEASE_BRANCH"
 # git push gitlab.ext -d test_v1.2.0
 
 mvn -f cdoc2-server deploy -DskipTests
+
+git checkout $GIT_BRANCH
+
+#increase minor version and add -SNAPSHOT
+#mvn -f cdoc2-shared-crypto versions:set -DnextSnapshot -DnextSnapshotIndexToIncrement=2
 
 #build docker
