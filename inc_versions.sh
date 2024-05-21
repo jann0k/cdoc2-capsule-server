@@ -26,7 +26,7 @@ function addItem() {
 
 PERFORM=true
 
-while getopts "":d"" opt; do
+while getopts ":d" opt; do
   case ${opt} in
     d)
       echo "-d Dry-run mode"
