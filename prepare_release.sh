@@ -5,6 +5,12 @@
 # (if local maven repo includes newer modules from cdoc2-java-ref-impl) then those are also updated
 # build, test, install (local maven repo)
 
+if [[ "master" != "$GIT_BRANCH" ]]; then
+  echo "Not on 'master' branch. You have 5 seconds to abort, before script will continue"
+  sleep 5
+fi
+
+
 if [[ -n $(git cherry -v) ]]; then
   echo "Detected unpushed commits. Exit"
   exit 1

@@ -7,10 +7,16 @@ set -o xtrace
 # mvn deploy
 # docker deploy
 
-export GIT_REMOTE=gitlab.ext
+#export GIT_REMOTE=gitlab.ext
 export CDOC2_SERVER_VER=$(mvn -f cdoc2-server help:evaluate -Dexpression=project.version -q -DforceStdout)
 
 GIT_BRANCH=$(git branch --show-current)
+GIT_REMOTE=$(git config --get-regexp "branch\.$GIT_BRANCH\.remote" | sed -e "s/^.* //")
+
+if [[ "master" != "$GIT_BRANCH" ]]; then
+  echo "Not on 'master' branch. You have 5 seconds to abort, before script will continue"
+  sleep 5
+fi
 
 
 if [[ ${CDOC2_SERVER_VER} == *"SNAPSHOT"* ]];then
@@ -24,22 +30,23 @@ if ! grep -q ${CDOC2_SERVER_VER} "CHANGELOG.md"; then
 fi
 
 
-
+#TODO: change release_branch name
 export RELEASE_BRANCH="test_v$CDOC2_SERVER_VER"
 
-git checkout -b "$RELEASE_BRANCH"
-git commit -a -m "Release cdoc2-server version $CDOC2_SERVER_VER"
-git tag "$RELEASE_BRANCH"
+git checkout -b "$RELEASE_BRANCH" || exit 1
+git commit -a -m "Release cdoc2-server version $CDOC2_SERVER_VER" || exit 1
+git tag "$RELEASE_BRANCH" || exit 1
+git push --tags $GIT_REMOTE "tag_$RELEASE_BRANCH" || exit 1
 
-git push --tags $GIT_REMOTE "$RELEASE_BRANCH"
-
-# delete branch
+# to delete branch
 # git checkout RM-3196_release_workflow
 # git branch -D test_v1.2.0
 # git push gitlab.ext -d test_v1.2.0
 
+#deploy RELEASE modules
 mvn -f cdoc2-server deploy -DskipTests
 
+# switch back to original branch
 git checkout $GIT_BRANCH
 
 #increase minor version and add -SNAPSHOT
