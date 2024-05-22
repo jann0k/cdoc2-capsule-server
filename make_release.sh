@@ -36,8 +36,10 @@ export RELEASE_TAG="tag_$RELEASE_BRANCH"
 
 git checkout -b "$RELEASE_BRANCH" || exit 1
 git commit -a -m "Release cdoc2-server version $CDOC2_SERVER_VER" || exit 1
+git push "$GIT_REMOTE" -u "$RELEASE_BRANCH" || exit 1
 git tag "$RELEASE_TAG" || exit 1
 git push --tags $GIT_REMOTE "$RELEASE_TAG" || exit 1
+echo "Created release branch $RELEASE_BRANCH"
 
 # to delete branch
 # git checkout RM-3196_release_workflow
@@ -53,6 +55,12 @@ fi
 
 # switch back to original branch
 git checkout $GIT_BRANCH
+
+echo "Created release branch $RELEASE_BRANCH"
+echo "To merge squash back to your branch. Run"
+echo "git merge --squash $RELEASE_TAG"
+echo "git commit -m \"Squashed commit from $RELEASE_TAG\""
+
 
 #increase minor version and add -SNAPSHOT
 #mvn -f cdoc2-shared-crypto versions:set -DnextSnapshot -DnextSnapshotIndexToIncrement=2
