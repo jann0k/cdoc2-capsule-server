@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#set -o xtrace
+set -o xtrace
 # git commit
 # git tag
 # git push
@@ -30,9 +30,9 @@ if ! grep -q ${CDOC2_SERVER_VER} "CHANGELOG.md"; then
 fi
 
 
-#TODO: change release_branch name
+#TODO: change release_branch name release_v<xyz>
 export RELEASE_BRANCH="test_v$CDOC2_SERVER_VER"
-export RELEASE_TAG="tag_$RELEASE_BRANCH"
+export RELEASE_TAG="v$RELEASE_BRANCH"
 
 git checkout -b "$RELEASE_BRANCH" || exit 1
 git commit -a -m "Release cdoc2-server version $CDOC2_SERVER_VER" || exit 1
