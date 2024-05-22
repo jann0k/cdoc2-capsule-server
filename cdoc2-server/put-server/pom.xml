@@ -11,7 +11,7 @@
 
 	<artifactId>cdoc2-put-server</artifactId>
 	<groupId>ee.cyber.cdoc2</groupId>
-	<version>1.2.0-SNAPSHOT</version>
+	<version>1.2.0</version>
 	<packaging>jar</packaging>
 
 	<name>cdoc2-put-server</name>
@@ -74,32 +74,32 @@
 		<dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-shared-crypto</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
+			<version>0.1.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-common-server</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>1.2.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-server-db</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>1.2.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-openapi</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>1.2.0</version>
 			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-common-server</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>1.2.0</version>
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>
@@ -107,14 +107,14 @@
 		<dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-lib</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.3.0</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-lib</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.3.0</version>
 			<!-- cdoc2-lib src/test compiled classes-->
 			<type>test-jar</type>
 			<scope>test</scope>
