@@ -47,10 +47,14 @@ git push --tags $GIT_REMOTE "$RELEASE_TAG" || exit 1
 #deploy RELEASE modules
 mvn -f cdoc2-server deploy -DskipTests
 
+if [[ $? -ne 0 ]]; then
+  echo "mvn deploy failed. If this was temporary error, it may be possible to recover by re-running 'mvn -f cdoc2-server deploy -DskipTests'"
+fi
+
 # switch back to original branch
 git checkout $GIT_BRANCH
 
 #increase minor version and add -SNAPSHOT
 #mvn -f cdoc2-shared-crypto versions:set -DnextSnapshot -DnextSnapshotIndexToIncrement=2
 
-#build docker
+#build docker images?
