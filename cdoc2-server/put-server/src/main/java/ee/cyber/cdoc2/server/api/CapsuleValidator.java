@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.security.GeneralSecurityException;
 import java.security.interfaces.ECPublicKey;
 
-import ee.cyber.cdoc2.server.model.Capsule;
+import ee.cyber.cdoc2.server.generated.model.Capsule;
 
 /**
  * Utility class for validating capsules.

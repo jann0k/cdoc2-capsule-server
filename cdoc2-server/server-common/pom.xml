@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>cdoc2-common-server</artifactId>
-	<version>2.0.1</version>
+	<version>2.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -18,10 +18,17 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
+		<!--dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-openapi</artifactId>
 			<version>2.1.0</version>
+			<scope>test</scope>
+		</dependency-->
+
+		<dependency>
+			<groupId>ee.cyber.cdoc2</groupId>
+			<artifactId>cdoc2-server-openapi</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 

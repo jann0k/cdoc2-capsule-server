@@ -11,7 +11,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>../cdoc2-openapi</module>
+		<module>server-openapi</module>
 		<module>server-common</module>
 		<module>server-db</module>
 		<module>put-server</module>

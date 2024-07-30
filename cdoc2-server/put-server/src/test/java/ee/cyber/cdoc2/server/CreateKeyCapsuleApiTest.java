@@ -23,8 +23,8 @@ import ee.cyber.cdoc2.crypto.EllipticCurve;
 import ee.cyber.cdoc2.crypto.PemTools;
 import ee.cyber.cdoc2.crypto.RsaUtils;
 import ee.cyber.cdoc2.server.api.CreateKeyCapsuleApi;
+import ee.cyber.cdoc2.server.generated.model.Capsule;
 import ee.cyber.cdoc2.server.config.KeyCapsuleConfigProperties;
-import ee.cyber.cdoc2.server.model.Capsule;
 import ee.cyber.cdoc2.server.model.db.KeyCapsuleDb;
 
 import static ee.cyber.cdoc2.server.Utils.getCapsuleExpirationTime;

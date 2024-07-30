@@ -13,7 +13,7 @@ import ee.cyber.cdoc2.crypto.PemTools;
 import ee.cyber.cdoc2.crypto.Pkcs11DeviceConfiguration;
 import ee.cyber.cdoc2.crypto.Pkcs11Tools;
 import ee.cyber.cdoc2.crypto.RsaUtils;
-import ee.cyber.cdoc2.server.model.Capsule;
+import ee.cyber.cdoc2.server.generated.model.Capsule;
 import ee.cyber.cdoc2.server.model.db.KeyCapsuleDb;
 
 import java.io.ByteArrayInputStream;

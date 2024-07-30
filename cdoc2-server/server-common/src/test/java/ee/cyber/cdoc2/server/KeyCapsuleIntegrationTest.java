@@ -10,7 +10,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ee.cyber.cdoc2.server.model.Capsule;
+import ee.cyber.cdoc2.server.generated.model.Capsule;
 import ee.cyber.cdoc2.server.model.db.KeyCapsuleDb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

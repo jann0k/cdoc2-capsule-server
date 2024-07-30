@@ -11,7 +11,7 @@
 
 	<artifactId>cdoc2-put-server</artifactId>
 	<groupId>ee.cyber.cdoc2</groupId>
-	<version>1.3.1</version>
+	<version>1.4.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>cdoc2-put-server</name>
@@ -34,7 +34,7 @@
         <logback.version>1.5.6</logback.version>
 	</properties>
 
-	<repositories>
+	<!--repositories>
 		<repository>
 			<id>gitlab.ext.cyber.ee</id>
 			<url>https://gitlab.ext.cyber.ee/api/v4/projects/40/packages/maven</url>
@@ -50,7 +50,7 @@
             <id>gitlab.ext.cyber.ee</id>
             <url>https://gitlab.ext.cyber.ee/api/v4/projects/39/packages/maven</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement-->
 
 	<profiles>
 		<profile>
@@ -77,10 +77,24 @@
 			<version>0.1.0</version>
 		</dependency>
 
+		<!--dependency>
+			<groupId>ee.cyber.cdoc2.openapi</groupId>
+			<artifactId>cdoc2-key-capsules-openapi</artifactId>
+			<version>2.1.0</version>
+			<type>yaml</type>
+		</dependency-->
+
+		<dependency>
+			<groupId>ee.cyber.cdoc2</groupId>
+			<artifactId>cdoc2-server-openapi</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-common-server</artifactId>
-			<version>2.0.1</version>
+			<version>2.1.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -89,17 +103,19 @@
 			<version>2.0.1</version>
 		</dependency>
 
-		<dependency>
+
+
+		<!--dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-openapi</artifactId>
 			<version>2.1.0</version>
 			<scope>compile</scope>
-		</dependency>
+		</dependency-->
 
 		<dependency>
 			<groupId>ee.cyber.cdoc2</groupId>
 			<artifactId>cdoc2-common-server</artifactId>
-			<version>2.0.1</version>
+			<version>2.1.0-SNAPSHOT</version>
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>

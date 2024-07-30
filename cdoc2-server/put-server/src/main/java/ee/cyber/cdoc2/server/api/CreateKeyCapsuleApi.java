@@ -1,7 +1,10 @@
 package ee.cyber.cdoc2.server.api;
 
 import ee.cyber.cdoc2.server.config.KeyCapsuleConfigProperties;
-import ee.cyber.cdoc2.server.model.Capsule;
+import ee.cyber.cdoc2.server.generated.model.Capsule;
+import ee.cyber.cdoc2.server.generated.api.KeyCapsulesApi;
+import ee.cyber.cdoc2.server.generated.api.KeyCapsulesApiDelegate;
+import ee.cyber.cdoc2.server.generated.api.KeyCapsulesApiController;
 import ee.cyber.cdoc2.server.model.db.KeyCapsuleDb;
 import ee.cyber.cdoc2.server.model.db.KeyCapsuleRepository;
 import java.net.URI;
