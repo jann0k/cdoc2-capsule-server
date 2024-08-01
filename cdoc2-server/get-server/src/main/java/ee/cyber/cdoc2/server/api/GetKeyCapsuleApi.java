@@ -5,7 +5,10 @@ import ee.cyber.cdoc2.shared.crypto.RsaUtils;
 import ee.cyber.cdoc2.shared.crypto.KeyAlgorithm;
 import ee.cyber.cdoc2.server.model.db.KeyCapsuleDb;
 import ee.cyber.cdoc2.server.model.db.KeyCapsuleRepository;
-import ee.cyber.cdoc2.server.model.Capsule;
+import ee.cyber.cdoc2.server.generated.model.Capsule;
+import ee.cyber.cdoc2.server.generated.api.KeyCapsulesApi;
+import ee.cyber.cdoc2.server.generated.api.KeyCapsulesApiDelegate;
+
 
 import java.security.GeneralSecurityException;
 import java.security.PublicKey;

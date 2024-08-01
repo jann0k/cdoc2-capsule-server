@@ -22,7 +22,7 @@
 
     <!-- upload maven packages, used by maven deploy-->
     <!-- optionally specify as
-    -DaltDeploymentRepository=gitlab.ext.cyber.ee::https://gitlab.ext.cyber.ee/api/v4/projects/26/packages/maven
+    -DaltDeploymentRepository=gitlab.ext.cyber.ee::https://gitlab.ext.cyber.ee/api/v4/projects/39/packages/maven
     -->
     <distributionManagement>
         <repository>

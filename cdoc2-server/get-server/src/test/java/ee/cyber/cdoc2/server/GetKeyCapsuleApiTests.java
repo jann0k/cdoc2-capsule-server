@@ -7,7 +7,7 @@ import ee.cyber.cdoc2.client.EcCapsuleClientImpl;
 import ee.cyber.cdoc2.client.KeyCapsuleClientImpl;
 import ee.cyber.cdoc2.client.RsaCapsuleClientImpl;
 import ee.cyber.cdoc2.client.api.ApiException;
-import ee.cyber.cdoc2.server.model.Capsule;
+import ee.cyber.cdoc2.server.generated.model.Capsule;
 import ee.cyber.cdoc2.crypto.Crypto;
 import ee.cyber.cdoc2.crypto.ECKeys;
 import ee.cyber.cdoc2.crypto.EllipticCurve;
