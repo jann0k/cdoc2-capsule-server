@@ -43,25 +43,54 @@
 		<spring.version>6.1.6</spring.version>
 
   	</properties>
+	<profiles>
+	<profile>
+		<!-- activate github profile when run by github actions -->
+		<id>github_ci</id>
+		<activation>
+			<property>
+				<name>env.GITHUB_ACTIONS</name>
+				<value>true</value>
+			</property>
+		</activation>
+		<repositories>
+			<repository>
+				<!-- must have matching server.id in settings.xml -->
+				<!-- github actions/checkout default for server-id is "github"-->
+				<id>github</id>
+				<!-- When pulling, the package index is based on the organization level, not the repository level. -->
+				<!-- Although GITHUB_REPOSITORY contains repo, all organization packages are indexed there -->
+				<!-- https://stackoverflow.com/questions/63041402/github-packages-single-maven-repository-for-github-organization -->
+				<url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY}</url>
+			</repository>
+		</repositories>
+	</profile>
 
-	<repositories>
-		<repository>
-			<id>gitlab.ext.cyber.ee</id>
-			<url>https://gitlab.ext.cyber.ee/api/v4/projects/40/packages/maven</url>
-		</repository>
-	</repositories>
+	<profile>
+		<!-- set gitlab.ext profile active when run by gitlab CI -->
+		<id>gitlab_ci</id>
+		<activation>
+			<property>
+				<name>env.GITLAB_CI</name>
+				<value>true</value>
+			</property>
+		</activation>
+		<!-- repositories are configured in settings.xml -->
+		<!--repositories></repositories-->
 
-	<distributionManagement>
-		<repository>
-			<id>gitlab.ext.cyber.ee</id>
-			<url>https://gitlab.ext.cyber.ee/api/v4/projects/39/packages/maven</url>
-		</repository>
-
-		<snapshotRepository>
-			<id>gitlab.ext.cyber.ee</id>
-			<url>https://gitlab.ext.cyber.ee/api/v4/projects/39/packages/maven</url>
-		</snapshotRepository>
-	</distributionManagement>
+		<distributionManagement>
+			<!-- env variables are available, when run by gitlab CI -->
+			<repository>
+				<id>gitlab.ext.cyber.ee</id>
+				<url>${env.CI_SERVER_URL}/api/v4/projects/${env.CI_PROJECT_ID}/packages/maven</url>
+			</repository>
+			<snapshotRepository>
+				<id>gitlab.ext.cyber.ee</id>
+				<url>${env.CI_SERVER_URL}/api/v4/projects/${env.CI_PROJECT_ID}/packages/maven</url>
+			</snapshotRepository>
+		</distributionManagement>
+	</profile>
+	</profiles>
 
 	<dependencyManagement>
 		<dependencies>
@@ -74,6 +103,14 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<repositories>
+	<!-- configure repositories in settings.xml -->
+	<!--
+	https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry
+	#authenticating-with-a-personal-access-token
+	-->
+	</repositories>
 
 	<build>
 		<pluginManagement>
