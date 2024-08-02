@@ -50,10 +50,10 @@ public class RsaKeyCapsuleScenarios extends KeyCapsuleScenarios {
         return scenario("Request RSA capsule with mismatching recipient")
             .exec(
                 this.sendKeyCapsuleCheckSuccess(
-                    this.testData::generateRsaCapsuleWithWrongRecipient, ScenarioIdentifiers.NEG_GET_08 + " create"
+                    this.testData::generateRsaCapsuleWithWrongRecipient, ScenarioIdentifiers.NEG_GET_09 + " create"
                 )
             )
-            .exec(this.checkKeyCapsuleMismatch(ScenarioIdentifiers.NEG_GET_08 + " get"));
+            .exec(this.checkKeyCapsuleMismatch(ScenarioIdentifiers.NEG_GET_09 + " get"));
     }
 
     public ScenarioBuilder sendRsaKeyCapsuleRepeatedly() {

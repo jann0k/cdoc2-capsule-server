@@ -1,6 +1,7 @@
 package ee.cyber.cdoc2.server;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.GeneralSecurityException;
@@ -22,8 +23,11 @@ public final class TestData {
     public static Path getKeysDirectory() {
         Properties prop = new Properties();
         //generated during maven generate-test-resources phase, see pom.xml
-        prop.load(TestData.class.getClassLoader().getResourceAsStream("test.properties"));
+        String windowsPathEscape = new String(TestData.class.getClassLoader()
+                .getResourceAsStream("test.properties").readAllBytes());
+        prop.load(new StringReader(windowsPathEscape.replace("\\", "\\\\")));
         String keysProperty = prop.getProperty("cdoc2.keys.dir");
+        log.debug("Value for property cdoc2.keys.dir is {}", keysProperty);
         Path keysPath = Path.of(keysProperty).normalize();
         log.debug("Loading keys/certs from {}", keysPath);
         return keysPath;

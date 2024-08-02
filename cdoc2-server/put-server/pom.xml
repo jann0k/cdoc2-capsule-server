@@ -290,7 +290,7 @@
 						<configuration>
 							<target>
 								<!-- create properties file for tests -->
-								<echo file="${basedir}/src/test/resources/test.properties" append="false">cdoc2.keys.dir=${basedir}/../keys
+								<echo file="${basedir}/src/test/resources/test.properties" append="false">cdoc2.keys.dir=${basedir}${file.separator}..${file.separator}keys
 								</echo>
 							</target>
 						</configuration>

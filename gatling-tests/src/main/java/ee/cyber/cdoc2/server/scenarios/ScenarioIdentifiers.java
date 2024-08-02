@@ -19,9 +19,13 @@ public final class ScenarioIdentifiers {
     public static final String NEG_GET_02 = "GET_CAPSULE-NEG-02-RANDOM_UUID_TRANSACTION_ID";
     public static final String NEG_GET_03 = "GET_CAPSULE-NEG-03-TOO_SHORT_TRANSACTION_ID";
     public static final String NEG_GET_04 = "GET_CAPSULE-NEG-04-EMPTY_STRING_TRANSACTION_ID";
-    public static final String NEG_GET_05 = "GET_CAPSULE-NEG-05-TOO_LONG_RANDOM_STRING_TRANSACTION_ID";
-    public static final String NEG_GET_06 = "ECC-GET_CAPSULE-NEG-06-PUBLIC_KEY_NOT_MATCHING";
-    public static final String NEG_GET_08 = "RSA-GET_CAPSULE-NEG-08-PUBLIC_KEY_NOT_MATCHING";
+    public static final String NEG_GET_05 = "GET_CAPSULE-NEG-05-MISSING_TRANSACTION_ID";
+    public static final String NEG_GET_06 = "GET_CAPSULE-NEG-06"
+        + "-MISSING_TRANSACTION_ID_AND_URI_SLASH";
+    public static final String NEG_GET_07 = "GET_CAPSULE-NEG-07"
+        + "-TOO_LONG_RANDOM_STRING_TRANSACTION_ID";
+    public static final String NEG_GET_08 = "ECC-GET_CAPSULE-NEG-08-PUBLIC_KEY_NOT_MATCHING";
+    public static final String NEG_GET_09 = "RSA-GET_CAPSULE-NEG-09-PUBLIC_KEY_NOT_MATCHING";
 
     public static final String NEG_PUT_01 = "RSA-PUT_CAPSULE-NEG-01-CAPSULE_TOO_BIG";
 }

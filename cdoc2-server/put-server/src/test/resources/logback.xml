@@ -28,6 +28,7 @@
 
     <!-- mark DEBUG level if needed to read hibernate logs -->
     <logger name="org.hibernate" level="OFF" />
+    <logger name="org.springframework" level="DEBUG"/>
 
     <!-- LOG everything at INFO level -->
     <root level="info">

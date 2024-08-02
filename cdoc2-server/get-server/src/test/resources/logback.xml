@@ -14,7 +14,7 @@
 
     <appender name="RollingFile"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}/server.log</file>
+        <file>${LOGS}/get-server.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d %p %C{1} [%t] %m%n</Pattern>
         </encoder>
@@ -28,6 +28,7 @@
 
     <!-- mark DEBUG level if needed to read hibernate logs -->
     <logger name="org.hibernate" level="OFF" />
+    <logger name="org.springframework" level="DEBUG"/>
 
     <!-- LOG everything at INFO level -->
     <root level="info">

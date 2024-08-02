@@ -20,6 +20,9 @@ cd put-server
 java -Dspring.config.location=config/application-local.properties -jar target/cdoc2-put-server-VER.jar
 ```
 
+Or run servers with `-Dlogging.config=target/test-classes/logback.xml` if you need to see logs.
+
+
 ## Configuration
 
 In configuration file one can specify following parameters

@@ -144,6 +144,33 @@ public abstract class KeyCapsuleScenarios {
         );
     }
 
+    protected ChainBuilder checkEmptyTransactionId(
+        String testId,
+        String transactionId,
+        HttpResponseStatus expectedResponse
+    ) {
+        return exec(
+            http(testId + " - with empty txId '" + transactionId + "'")
+                .get(this.testConf.getGetServerBaseUrl() + API_ENDPOINT + '/' + transactionId)
+                .check(
+                    status().is(expectedResponse.code())
+                )
+        );
+    }
+
+    protected ChainBuilder checkMissingTransactionIdAndUriSlash(
+        String testId,
+        HttpResponseStatus expectedResponse
+    ) {
+        return exec(
+            http(testId + " - with missing txId")
+                .get(this.testConf.getGetServerBaseUrl() + API_ENDPOINT)
+                .check(
+                    status().is(expectedResponse.code())
+                )
+        );
+    }
+
     protected GeneratedCapsule getSentData(Long userId) {
         return Optional.ofNullable(this.sentData.get(userId))
             .orElseThrow(() -> new RuntimeException("No sent data for user " + userId));

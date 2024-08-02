@@ -90,6 +90,7 @@ spring.datasource.password=secret
 spring.datasource.driver-class-name=org.postgresql.Driver
 
 # logging levels
+# change to 'debug' if you want to see logs. Run server with target/test-classes/logback.xml
 logging.level.root=info
 logging.level.ee.cyber.cdoc2=trace
 
@@ -172,6 +173,7 @@ spring.datasource.password=secret
 spring.datasource.driver-class-name=org.postgresql.Driver
 
 # logging levels
+# change to 'debug' if you want to see logs. Run server with target/test-classes/logback.xml
 logging.level.root=info
 logging.level.ee.cyber.cdoc2=trace
 

@@ -37,6 +37,7 @@ java -Dspring.config.location=config/application-local.properties -jar target/cd
 ```
 
 where VER is the version of the package built by mvn package previously.
+Or run servers with `-Dlogging.config=target/test-classes/logback.xml` if you need to see logs.
 
 Note: to enable TLS handshake debugging, add `-Djavax.net.debug=ssl:handshake` option
 

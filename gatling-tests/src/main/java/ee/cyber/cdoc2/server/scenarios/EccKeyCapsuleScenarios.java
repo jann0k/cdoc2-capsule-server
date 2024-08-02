@@ -43,16 +43,17 @@ public class EccKeyCapsuleScenarios extends KeyCapsuleScenarios {
     public ScenarioBuilder getRecipientMismatch() {
         return scenario("Request EC capsule with mismatching recipient")
             .exec(this.sendKeyCapsuleCheckSuccess(
-                this.testData::generateEccCapsuleWithWrongRecipient, ScenarioIdentifiers.NEG_GET_06 + " create")
+                this.testData::generateEccCapsuleWithWrongRecipient, ScenarioIdentifiers.NEG_GET_08 + " create")
             )
-            .exec(this.checkKeyCapsuleMismatch(ScenarioIdentifiers.NEG_GET_06 + " get"));
+            .exec(this.checkKeyCapsuleMismatch(ScenarioIdentifiers.NEG_GET_08 + " get"));
     }
 
     public ScenarioBuilder getWithInvalidTransactionIds() {
         return scenario("Request capsule with invalid transactionId values")
             .exec(
                 this.checkInvalidTransactionId(
-                    ScenarioIdentifiers.NEG_GET_02, TestDataGenerator.randomString(TX_ID_MIN_LENGTH),
+                    ScenarioIdentifiers.NEG_GET_02,
+                    TestDataGenerator.randomString(TX_ID_MIN_LENGTH),
                     HttpResponseStatus.NOT_FOUND
                 ),
                 this.checkInvalidTransactionId(
@@ -60,13 +61,23 @@ public class EccKeyCapsuleScenarios extends KeyCapsuleScenarios {
                     "123",
                     HttpResponseStatus.BAD_REQUEST
                 ),
-                this.checkInvalidTransactionId(
+                this.checkEmptyTransactionId(
                     ScenarioIdentifiers.NEG_GET_04,
                     "",
+                    HttpResponseStatus.NOT_FOUND
+                ),
+                this.checkInvalidTransactionId(
+                    ScenarioIdentifiers.NEG_GET_05,
+                    null,
+                    HttpResponseStatus.BAD_REQUEST
+                ),
+                this.checkMissingTransactionIdAndUriSlash(
+                    ScenarioIdentifiers.NEG_GET_06,
                     HttpResponseStatus.METHOD_NOT_ALLOWED
                 ),
                 this.checkInvalidTransactionId(
-                    ScenarioIdentifiers.NEG_GET_05, TestDataGenerator.randomString(TX_ID_MAX_LENGTH + 1),
+                    ScenarioIdentifiers.NEG_GET_07,
+                    TestDataGenerator.randomString(TX_ID_MAX_LENGTH + 1),
                     HttpResponseStatus.BAD_REQUEST
                 )
             )
