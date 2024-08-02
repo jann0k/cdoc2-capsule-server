@@ -133,6 +133,7 @@ publish:maven:
   stage: publish
   image: maven:3.8.8-eclipse-temurin-17
   script:
+    - cat $MAVEN_SETTINGS
     - mvn -f cdoc2-server/ clean deploy -s $MAVEN_SETTINGS -DskipTests -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository
   cache: 
     key: "$CI_COMMIT_REF_NAME"
