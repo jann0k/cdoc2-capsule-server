@@ -415,7 +415,7 @@
 				<configuration>
 					<image>
 						<env>
-							<BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
+							<BP_JVM_VERSION>21</BP_JVM_VERSION>
 							<BP_SPRING_CLOUD_BINDINGS_DISABLED>true</BP_SPRING_CLOUD_BINDINGS_DISABLED>
 							<!--suppress UnresolvedMavenProperty -->
 							<BP_DEPENDENCY_MIRROR>${bp.dependency.mirror}</BP_DEPENDENCY_MIRROR>
