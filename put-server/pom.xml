@@ -15,7 +15,7 @@
 	<packaging>jar</packaging>
 
 	<name>cdoc2-put-server</name>
-	<description>CDOC2 server for creating key capsules</description>
+	<description>CDOC2 server for storing key capsules</description>
 
 	<properties>
 		<java.version>17</java.version>
@@ -126,6 +126,11 @@
 					<url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY}</url>
 				</snapshotRepository>
 			</distributionManagement>
+
+			<properties>
+				<oci.image.source>${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}</oci.image.source>
+				<oci.image.revision>${env.GITHUB_SHA}</oci.image.revision>
+			</properties>
 
 		</profile>
 
@@ -413,8 +418,15 @@
 				<version>${spring-boot.version}</version>
 				<configuration>
 					<image>
+						<buildpacks>
+							<buildpack>urn:cnb:builder:paketo-buildpacks/java</buildpack>
+						</buildpacks>
 						<env>
 							<BP_JVM_VERSION>21</BP_JVM_VERSION>
+							<!-- paketo-buildpacks/image-labels -->
+							<BP_OCI_SOURCE>${oci.image.source}</BP_OCI_SOURCE>
+							<BP_OCI_REVISION>${oci.image.revision}</BP_OCI_REVISION>
+							<BP_OCI_DESCRIPTION>${project.description}</BP_OCI_DESCRIPTION>
 							<BP_SPRING_CLOUD_BINDINGS_DISABLED>true</BP_SPRING_CLOUD_BINDINGS_DISABLED>
 							<!--suppress UnresolvedMavenProperty -->
 							<BP_DEPENDENCY_MIRROR>${bp.dependency.mirror}</BP_DEPENDENCY_MIRROR>
